@@ -2,34 +2,37 @@
     background-color: #FFE4C4;
     margin: 0 auto;
     text-align: center;
-    font-family: unset;
 }
 #header{
-    margin-bottom: 50px;
-    height: 50px;
+    margin-bottom: 30px;
+    height: 70px;
     background-color: #B0E0E6;
     box-shadow: 0 10px 20px black;
+}
+
+h1 {
+    padding-top: 15px;
+}
+
+.button{
+    width: 80px;
+    color: white;
+    font-size: x-small;
+    background-color: black;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px black;
+    font-family: monospace;
 }
 
 #table{
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    width: 40%;
-    height: 250px;
+    width: 90%;
+    height: 400px;
     background-color: #B0E0E6;
     border-spacing: 5px;
     box-shadow: 0 20px 30px black;
-}
-.button{
-    margin-top: 10px;
-    width: 100px;
-    height: 40px;
-    font-size: 14px;
-    color: white;
-    border-radius: 50px;
-    background-color: black;
-    font-family: monospace;
 }
 #footer{
     margin-top: 50px;

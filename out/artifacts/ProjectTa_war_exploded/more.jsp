@@ -2,45 +2,46 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>hotel</title>
+	<link rel="stylesheet" type="text/css" href="more.css">
+	<title>more</title>
 </head>
 <body>
 	<div id="frame">
-		<div id="header">
-			<button class="button"><a href="add.jsp"><h2>Add</h2></a></button>
-			<button class="button"><a href=""><h2>Add Room</h2></a></button>
-		</div>
+		<div id="header"></div>
 		<table border="1" id="table">
 			<tr class="tr">
-				<th>ID</th>
-				<th>NAME</th>
-				<th>ROOM</th>
-				<th>DATE</th>
+				<th>AMOUNT</th>
+				<th>NUMBER</th>
+				<th>PRICE</th>
+				<th>DESCRIPTION</th>
 			</tr>
 			<tr class="tr">
 				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>
+				<th><button class="button"><a href=""><h3>To Book</h3></a></button></th>
 			</tr>
 			<tr class="tr">
 				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>
+				<th><button class="button"><a href=""><h3>To Book</h3></a></button></th>
 			</tr>
 			<tr class="tr">
 				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>
+				<th><button class="button"><a href=""><h3>To Book</h3></a></button></th>
 			</tr>
 			<tr class="tr">
 				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>
+				<th><button class="button"><a href=""><h3>To Book</h3></a></button></th>
 			</tr>
 		</table>
 		<div id="footer"></div>

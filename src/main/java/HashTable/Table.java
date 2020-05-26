@@ -34,7 +34,7 @@ public class Table<K, V> {
 
     // This implements hash function to find index
     // for a key
-    private int getBucketIndex(K key) {
+    private int getHash(K key) {
         int hashCode = key.hashCode();
         return hashCode % numBuckets;
     }
@@ -42,10 +42,10 @@ public class Table<K, V> {
     // Method to remove a given key
     public V remove(K key) {
         // Apply hash function to find index for given key
-        int bucketIndex = getBucketIndex(key);
+        int hash = getHash(key);
 
         // Get head of chain
-        HashNode<K, V> head = bucketArray.get(bucketIndex);
+        HashNode<K, V> head = bucketArray.get(hash);
 
         // Search for key in its chain
         HashNode<K, V> prev = null;
@@ -70,7 +70,7 @@ public class Table<K, V> {
         if (prev != null)
             prev.next = head.next;
         else
-            bucketArray.set(bucketIndex, head.next);
+            bucketArray.set(hash, head.next);
 
         return head.value;
     }
@@ -78,8 +78,8 @@ public class Table<K, V> {
     // Returns value for a key
     public V get(K key) {
         // Find head of chain for given key
-        int bucketIndex = getBucketIndex(key);
-        HashNode<K, V> head = bucketArray.get(bucketIndex);
+        int hash = getHash(key);
+        HashNode<K, V> head = bucketArray.get(hash);
 
         // Search key in chain
         while (head != null) {
@@ -95,8 +95,8 @@ public class Table<K, V> {
     // Adds a key value pair to hash
     public void add(K key, V value) {
         // Find head of chain for given key
-        int bucketIndex = getBucketIndex(key);
-        HashNode<K, V> head = bucketArray.get(bucketIndex);
+        int hash = getHash(key);
+        HashNode<K, V> head = bucketArray.get(hash);
 
         // Check if key is already present
         while (head != null) {
@@ -109,10 +109,10 @@ public class Table<K, V> {
 
         // Insert key in chain
         size++;
-        head = bucketArray.get(bucketIndex);
+        head = bucketArray.get(hash);
         HashNode<K, V> newNode = new HashNode<K, V>(key, value);
         newNode.next = head;
-        bucketArray.set(bucketIndex, newNode);
+        bucketArray.set(hash, newNode);
 
         // If load factor goes beyond threshold, then
         // double hash table size

@@ -1,16 +1,50 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Alexandr
-  Date: 24.05.2020
-  Time: 19:22
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  <p>hi Girls</p>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>hotel</title>
+</head>
+<body>
+	<div id="frame">
+		<div id="header">
+			<button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Add Customer</h2></a></button>
+			<button class="button"><a href=""><h2>Add Room</h2></a></button>
+		</div>
+		<table border="1" id="table">
+			<tr class="tr">
+				<th>ID</th>
+				<th>NAME</th>
+				<th>ROOM</th>
+				<th>DATE</th>
+			</tr>
+			<tr class="tr">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="tr">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="tr">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="tr">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<div id="footer"></div>
+	</div>
+
+</body>
 </html>

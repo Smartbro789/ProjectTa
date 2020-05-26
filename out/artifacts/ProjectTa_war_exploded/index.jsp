@@ -8,7 +8,7 @@
 <body>
 	<div id="frame">
 		<div id="header">
-			<button class="button"><a href="add.jsp"><h2>Add</h2></a></button>
+			<button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Add Customer</h2></a></button>
 			<button class="button"><a href=""><h2>Add Room</h2></a></button>
 		</div>
 		<table border="1" id="table">
@@ -19,28 +19,28 @@
 				<th>DATE</th>
 			</tr>
 			<tr class="tr">
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr class="tr">
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr class="tr">
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr class="tr">
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</table>
 		<div id="footer"></div>

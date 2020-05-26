@@ -3,7 +3,7 @@ package Model;
 import java.util.Date;
 
 public class Customer {
-//big dick - big balls
+
     private int customerId;
     private String customerName;
     private int customerRoom;

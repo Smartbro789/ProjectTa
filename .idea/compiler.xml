@@ -9,8 +9,8 @@
         <module name="ProjectTa" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ProjectTa" target="12" />
+    <bytecodeTargetLevel target="11">
+      <module name="ProjectTa" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

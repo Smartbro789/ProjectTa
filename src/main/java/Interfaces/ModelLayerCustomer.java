@@ -1,12 +1,11 @@
 package Interfaces;
 
+import HashTable.Table;
 import Model.Customer;
-
-import java.util.ArrayList;
 
 public interface ModelLayerCustomer {
 
-    ArrayList<Customer> selectAll();
+    Table<Integer, Customer> selectAll();
 
     Customer selectOne(int id);
 

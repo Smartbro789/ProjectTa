@@ -19,6 +19,7 @@ h1 {
     color: white;
     font-size: x-small;
     background-color: black;
+    height: 40px;
     border-radius: 50px;
     box-shadow: 0 10px 20px black;
     font-family: monospace;

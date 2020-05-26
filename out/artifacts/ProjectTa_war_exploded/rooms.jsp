@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Alexandr
@@ -34,8 +35,11 @@
             <td></td>
             <td></td>
             <td style="width: 170px; text-align: center;">
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Edit</h2></a></button>
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Delete</h2></a></button>
+                <button class="button"><a href='<c:url value="/editRoom?id=${room.roomId}" />'><h2>Edit</h2></a></button>
+                <form method="post" action='<c:url value="/deleteRoom" />' style="display:inline; height: 40px">
+                    <input type="hidden" name="id" value="${room.roomId}">
+                    <input type="submit" class="button" value="Delete">
+                </form>
             </td>
         </tr>
         <tr class="tr">

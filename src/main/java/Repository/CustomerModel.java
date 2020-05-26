@@ -1,10 +1,10 @@
 package Repository;
 
+import HashTable.Table;
 import Interfaces.ModelLayerCustomer;
 import Model.Customer;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class CustomerModel implements ModelLayerCustomer {
 
@@ -13,9 +13,9 @@ public class CustomerModel implements ModelLayerCustomer {
     private String password = "root";
 
     @Override
-    public ArrayList<Customer> selectAll() {
+    public Table<Integer, Customer> selectAll() {
 
-        ArrayList<Customer> customers = new ArrayList<>();
+        Table<Integer, Customer> hashTable = new Table<>();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
@@ -29,14 +29,14 @@ public class CustomerModel implements ModelLayerCustomer {
                     Date customerArrDate = resultSet.getDate(4);
                     Date customerDepDate = resultSet.getDate(5);
                     Customer customer = new Customer(customerId, customerName, customerRoom, customerArrDate, customerDepDate);
-                    customers.add(customer);
+                    hashTable.add(customerId, customer);
                 }
             }
         }
         catch(Exception ex){
             System.out.println(ex);
         }
-        return customers;
+        return hashTable;
     }
 
     @Override

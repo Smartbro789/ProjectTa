@@ -1,12 +1,6 @@
 package Controller;
 
-import Interfaces.ModelLayerCustomer;
-import Interfaces.ModelLayerRoom;
 import Interfaces.RoomProcessorInterface;
-import Model.Customer;
-import Model.Room;
-import Repository.CustomerModel;
-import Repository.RoomModel;
 import Service.RoomProcessor;
 
 import javax.servlet.ServletException;

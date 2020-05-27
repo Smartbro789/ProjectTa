@@ -2,6 +2,8 @@ package Repository;
 
 import Interfaces.ModelLayerRoom;
 import Model.Room;
+import Tree.Node;
+import Tree.RedBlackTree;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,9 +15,9 @@ public class RoomModel implements ModelLayerRoom {
     private String password = "root";
 
     @Override
-    public ArrayList<Room> selectAll() {
+    public RedBlackTree selectAllNumbers() {
 
-        ArrayList<Room> rooms = new ArrayList<>();
+        RedBlackTree rooms = new RedBlackTree();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
@@ -23,14 +25,9 @@ public class RoomModel implements ModelLayerRoom {
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM room");
                 while(resultSet.next()){
-                    int roomId = resultSet.getInt(1);
                     int roomNumber = resultSet.getInt(2);
-                    boolean roomStatus = resultSet.getBoolean(3);
-                    String roomType = resultSet.getString(4);
-                    int roomPrice = resultSet.getInt(5);
-                    String roomDesc = resultSet.getString(6);
-                    Room room = new Room(roomId, roomNumber, roomStatus, roomType, roomPrice, roomDesc);
-                    rooms.add(room);
+                    Node node = new Node(roomNumber);
+                    rooms.insert(node);
                 }
             }
         }
@@ -39,6 +36,34 @@ public class RoomModel implements ModelLayerRoom {
         }
         return rooms;
     }
+
+    public ArrayList<Room> selectByRoomType(String type) {
+
+        ArrayList<Room> types = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+                String sql = "SELECT * FROM room WHERE room_type = ?";
+                try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                    preparedStatement.setString(1, type);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+                    while (resultSet.next()) {
+                        String roomType = resultSet.getString(4);
+                        if (type.equalsIgnoreCase(roomType)) {
+                            Room room = selectOne(resultSet.getInt(1));
+                            types.add(room);
+                        }
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return types;
+    }
+
 
     @Override
     public Room selectOne(int id) {

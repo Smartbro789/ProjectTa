@@ -1,12 +1,11 @@
 package Interfaces;
 
 import Model.Room;
-
-import java.util.ArrayList;
+import Tree.RedBlackTree;
 
 public interface ModelLayerRoom {
 
-    ArrayList<Room> selectAll();
+    RedBlackTree selectAllNumbers();
 
     Room selectOne(int id);
 

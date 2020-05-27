@@ -16,7 +16,7 @@ public class DeleteRoom extends HttpServlet {
     RoomProcessorInterface model = new RoomProcessor();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         model.delete(id);
         resp.sendRedirect(req.getContextPath() + "/rooms.jsp");

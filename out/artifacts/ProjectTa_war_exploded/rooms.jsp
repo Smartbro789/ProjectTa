@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="frame">
-    <div id="header"><h1>Rooms</h1></div>
+    <div id="header"><h1 id="logo">Rooms</h1></div>
     <button class="button"><a href="${pageContext.request.contextPath}/addRoom"><h2>Add Room</h2></a></button>
     <table border="1" id="table">
         <tr class="tr">
@@ -36,10 +36,7 @@
             <td></td>
             <td style="width: 170px; text-align: center;">
                 <button class="button"><a href='<c:url value="/editRoom?id=${room.roomId}" />'><h2>Edit</h2></a></button>
-                <form method="post" action='<c:url value="/deleteRoom" />' style="display:inline; height: 40px">
-                    <input type="hidden" name="id" value="${room.roomId}">
-                    <input type="submit" class="button" value="Delete">
-                </form>
+                <button class="button"><a href='<c:url value="/deleteRoom?id=${room.roomId}" />'><h2>Delete</h2></a></button>
             </td>
         </tr>
         <tr class="tr">

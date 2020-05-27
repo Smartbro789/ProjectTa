@@ -1,9 +1,8 @@
 package Repository;
 
+import BTree.BPlusTree;
 import Interfaces.ModelLayerRoom;
 import Model.Room;
-import Tree.Node;
-import Tree.RedBlackTree;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,9 +14,9 @@ public class RoomModel implements ModelLayerRoom {
     private String password = "root";
 
     @Override
-    public RedBlackTree selectAllNumbers() {
+    public BPlusTree<Room, Integer> selectAllNumbers() {
 
-        RedBlackTree rooms = new RedBlackTree();
+        BPlusTree<Room, Integer>  rooms = new BPlusTree<>();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
@@ -26,8 +25,8 @@ public class RoomModel implements ModelLayerRoom {
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM room");
                 while(resultSet.next()){
                     int roomNumber = resultSet.getInt(2);
-                    Node node = new Node(roomNumber);
-                    rooms.insert(node);
+                    Room room = selectOne(resultSet.getInt(1));
+                    rooms.insert(room, roomNumber);
                 }
             }
         }

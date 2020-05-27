@@ -1,11 +1,11 @@
 package Interfaces;
 
+import BTree.BPlusTree;
 import Model.Room;
-import Tree.RedBlackTree;
 
 public interface ModelLayerRoom {
 
-    RedBlackTree selectAllNumbers();
+    BPlusTree<Room, Integer> selectAllNumbers();
 
     Room selectOne(int id);
 

@@ -23,7 +23,7 @@ public class EditRoom extends HttpServlet {
 
         int id = Integer.parseInt(req.getParameter("id"));
         req.setAttribute("room", model.selectOne(id));
-        getServletContext().getRequestDispatcher("/editRoom").forward(req, resp);
+        getServletContext().getRequestDispatcher("/editRoom.jsp").forward(req, resp);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class EditRoom extends HttpServlet {
         int price = Integer.parseInt(req.getParameter("price"));
         String description = req.getParameter("desc");
         model.editRoom(id, number, status, type, price, description);
-        resp.sendRedirect(req.getContextPath() + "rooms.jsp");
+        resp.sendRedirect(req.getContextPath() + "/rooms");
     }
 }
 

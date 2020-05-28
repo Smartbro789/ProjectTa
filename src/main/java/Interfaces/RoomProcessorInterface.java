@@ -11,4 +11,6 @@ public interface RoomProcessorInterface {
     void editRoom(int id, int number, boolean status, String type, int price, String description);
 
     void delete(int id);
+
+    int findId(int number);
 }

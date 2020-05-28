@@ -28,6 +28,6 @@ public class AddRoom extends HttpServlet {
         int price = Integer.parseInt(req.getParameter("price"));
         String description = req.getParameter("desc");
         model.addRoom(roomNumber, roomType, price, description);
-        resp.sendRedirect(req.getContextPath() + "/rooms.jsp");
+        resp.sendRedirect(req.getContextPath() + "/rooms");
     }
 }

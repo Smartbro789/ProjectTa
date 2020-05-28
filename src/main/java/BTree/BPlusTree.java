@@ -22,7 +22,6 @@ public class BPlusTree <T, V extends Comparable<V>>{
         this.left = null;
     }
 
-    //Inquire
     public T find(V key){
         T t = this.root.find(key);
         if(t == null){
@@ -49,16 +48,15 @@ public class BPlusTree <T, V extends Comparable<V>>{
 
 
     abstract class Node<T, V extends Comparable<V>>{
-        //parent node
+
         protected Node<T, V> parent;
-        // child node
+
         protected Node<T, V>[] childs;
-        // number of keys (child nodes)
+
         protected Integer number;
-        //key
+
         protected Object keys[];
 
-        //Construction method
         public Node(){
             this.keys = new Object[maxNumber];
             this.childs = new Node[maxNumber];
@@ -66,10 +64,8 @@ public class BPlusTree <T, V extends Comparable<V>>{
             this.parent = null;
         }
 
-        // lookup
         abstract T find(V key);
 
-        //insert
         abstract Node<T, V> insert(T value, V key);
 
         abstract LeafNode<T, V> refreshLeft();

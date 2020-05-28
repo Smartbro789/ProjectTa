@@ -9,7 +9,7 @@
 	<div id="frame">
 		<div id="header">
 			<button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Add Customer</h2></a></button>
-			<button class="button"><a href="${pageContext.request.contextPath}/rooms.jsp"><h2>Rooms</h2></a></button>
+			<button class="button"><a href="${pageContext.request.contextPath}/rooms"><h2>Rooms</h2></a></button>
 		</div>
 		<table border="1" id="table">
 			<tr class="tr">

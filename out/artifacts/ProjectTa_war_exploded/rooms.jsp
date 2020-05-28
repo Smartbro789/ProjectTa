@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Alexandr
-  Date: 26.05.2020
-  Time: 16:22
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,10 +9,9 @@
 <body>
 <div id="frame">
     <div id="header"><h1 id="logo">Rooms</h1></div>
-    <button class="button"><a href="${pageContext.request.contextPath}/addRoom"><h2>Add Room</h2></a></button>
+    <button class="button"><a href='<c:url value="/addRoom" />'><h2>Add Room</h2></a></button>
     <table border="1" id="table">
         <tr class="tr">
-            <th>ID</th>
             <th>Number</th>
             <th>Status</th>
             <th>Type</th>
@@ -27,54 +19,19 @@
             <th>Decsription</th>
             <th></th>
         </tr>
-        <tr class="tr">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="width: 170px; text-align: center;">
-                <button class="button"><a href='<c:url value="/editRoom?id=${room.roomId}" />'><h2>Edit</h2></a></button>
-                <button class="button"><a href='<c:url value="/deleteRoom?id=${room.roomId}" />'><h2>Delete</h2></a></button>
-            </td>
-        </tr>
-        <tr class="tr">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="width: 170px; text-align: center;">
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Edit</h2></a></button>
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Delete</h2></a></button>
-            </td>
-        </tr>
-        <tr class="tr">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="width: 170px; text-align: center;">
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Edit</h2></a></button>
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Delete</h2></a></button>
-            </td>
-        </tr>
-        <tr class="tr">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="width: 170px; text-align: center;">
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Edit</h2></a></button>
-                <button class="button"><a href="${pageContext.request.contextPath}/addCustomer.jsp"><h2>Delete</h2></a></button>
-            </td>
-        </tr>
+        <c:forEach var="room" items="${rooms}">
+            <tr class="tr">
+                <td>${room.getRoomNumber()}</td>
+                <td>${room.getRoomStatus()}</td>
+                <td>${room.getRoomType()}</td>
+                <td>${room.getRoomPrice()}</td>
+                <td>${room.getRoomDescription()}</td>
+                <td style="width: 170px; text-align: center;">
+                    <button class="button"><a href='<c:url value="/editRoom?id=${room.getRoomId()}" />'><h2>Edit</h2></a></button>
+                    <button class="button"><a href='<c:url value="/deleteRoom?id=${room.getRoomId()}" />'><h2>Delete</h2></a></button>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
     <div id="footer"></div>
 </div>

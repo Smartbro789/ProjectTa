@@ -1,5 +1,6 @@
 package Service;
 
+import BTree.BPlusTree;
 import Interfaces.ModelLayerRoom;
 import Interfaces.RoomProcessorInterface;
 import Model.Room;
@@ -29,5 +30,11 @@ public class RoomProcessor implements RoomProcessorInterface {
     @Override
     public void delete(int id){
         modelRoom.delete(id);
+    }
+
+    @Override
+    public int findId(int roomNumber){
+        Room room = modelRoom.selectAllNumbers().find(roomNumber);
+        return room.getRoomId();
     }
 }

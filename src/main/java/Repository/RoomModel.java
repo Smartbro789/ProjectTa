@@ -4,6 +4,7 @@ import BTree.BPlusTree;
 import Interfaces.ModelLayerRoom;
 import Model.Room;
 
+import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -27,6 +28,27 @@ public class RoomModel implements ModelLayerRoom {
                     int roomNumber = resultSet.getInt(2);
                     Room room = selectOne(resultSet.getInt(1));
                     rooms.insert(room, roomNumber);
+                }
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return rooms;
+    }
+
+    @Override
+    public ArrayList<Room> selectAll(){
+        ArrayList<Room> rooms = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = DriverManager.getConnection(url, username, password)){
+
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM room");
+                while(resultSet.next()){
+                    Room room = selectOne(resultSet.getInt(1));
+                    rooms.add(room);
                 }
             }
         }

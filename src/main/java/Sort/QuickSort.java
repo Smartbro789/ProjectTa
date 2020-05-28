@@ -1,6 +1,7 @@
 package Sort;
 
 class QuickSort {
+
     int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = (low - 1);
@@ -9,13 +10,11 @@ class QuickSort {
             if (arr[j] < pivot) {
                 i++;
 
-
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
-
 
         int temp = arr[i + 1];
         arr[i + 1] = arr[high];

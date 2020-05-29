@@ -10,11 +10,25 @@
 	background-color: #B0E0E6;
 	box-shadow: 0 10px 20px black;
 }
+
+.container {
+	width: 100%;
+	margin-top: 20px;
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
 #table{
 	margin-left: auto;
 	margin-right: auto;
 	width: 70%;
-	height: 400px;
 	background-color: #B0E0E6;
 	border-spacing: 5px;
 	box-shadow: 0 20px 30px black;

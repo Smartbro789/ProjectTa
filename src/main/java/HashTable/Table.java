@@ -3,17 +3,13 @@ package HashTable;
 import java.util.ArrayList;
 
 public class Table<K, V> {
-    // bucketArray is used to store array of chains
+
     private ArrayList<HashNode<K, V>> bucketArray;
 
-    // Current capacity of array list
     private int numBuckets;
 
-    // Current size of array list
     private int size;
 
-    // Constructor (Initializes capacity, size and
-    // empty chains.
     public Table() {
         bucketArray = new ArrayList<>();
         numBuckets = 10;
@@ -32,8 +28,6 @@ public class Table<K, V> {
         return size() == 0;
     }
 
-    // This implements hash function to find index
-    // for a key
     private int getHash(K key) {
         int hashCode = key.hashCode();
         return hashCode % numBuckets;

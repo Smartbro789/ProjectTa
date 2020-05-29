@@ -5,7 +5,6 @@ import Interfaces.ModelLayerCustomer;
 import Model.Customer;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class CustomerModel implements ModelLayerCustomer {
 
@@ -81,8 +80,8 @@ public class CustomerModel implements ModelLayerCustomer {
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
                     preparedStatement.setString(1, customer.getCustomerName());
                     preparedStatement.setInt(2, customer.getCustomerRoom());
-                    preparedStatement.setDate(3, (Date) customer.getCustomerArrDate());
-                    preparedStatement.setDate(4, (Date) customer.getCustomerDepDate());
+                    preparedStatement.setDate(3, new Date(customer.getCustomerArrDate().getTime()));
+                    preparedStatement.setDate(4, new Date(customer.getCustomerDepDate().getTime()));
                     return  preparedStatement.executeUpdate();
                 }
             }
@@ -105,9 +104,9 @@ public class CustomerModel implements ModelLayerCustomer {
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
                     preparedStatement.setString(1, customer.getCustomerName());
                     preparedStatement.setInt(2, customer.getCustomerRoom());
-                    preparedStatement.setDate(3, (Date) customer.getCustomerArrDate());
-                    preparedStatement.setDate(4, (Date) customer.getCustomerDepDate());
-                    preparedStatement.setInt(2, customer.getCustomerId());
+                    preparedStatement.setDate(3, new Date(customer.getCustomerArrDate().getTime()));
+                    preparedStatement.setDate(4, new Date(customer.getCustomerDepDate().getTime()));
+                    preparedStatement.setInt(5, customer.getCustomerId());
 
                     return  preparedStatement.executeUpdate();
                 }

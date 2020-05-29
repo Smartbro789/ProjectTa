@@ -1,6 +1,5 @@
 package Service;
 
-import BTree.BPlusTree;
 import Interfaces.ModelLayerRoom;
 import Interfaces.RoomProcessorInterface;
 import Model.Room;
@@ -39,6 +38,11 @@ public class RoomProcessor implements RoomProcessorInterface {
     public int findId(int roomNumber){
         Room room = modelRoom.selectAllNumbers().find(roomNumber);
         return room.getRoomId();
+    }
+
+    @Override
+    public void toBook(int id){
+        modelRoom.toBook(id);
     }
 
     @Override

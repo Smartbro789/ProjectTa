@@ -11,7 +11,7 @@ public class BPlusTree <T, V extends Comparable<V>>{
     private LeafNode<T, V> left;
 
     public BPlusTree(){
-        this(1);
+        this(2);
     }
 
     public BPlusTree(Integer bTreeOrder){

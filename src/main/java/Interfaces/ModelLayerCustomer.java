@@ -9,6 +9,8 @@ public interface ModelLayerCustomer {
 
     Table<Integer, Customer> selectAll();
 
+    public ArrayList<Customer> selectAllList();
+
     Customer selectOne(int id);
 
     int insert(Customer customer);

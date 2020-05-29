@@ -11,7 +11,7 @@ public class RoomModel implements ModelLayerRoom {
 
     private  String url = "jdbc:mysql://localhost/hoteldb?serverTimezone=Europe/Moscow&useSSL=false";
     private  String username = "root";
-    private String password = "root";
+    private String password = "admin";
 
     @Override
     public BPlusTree<Room, Integer> selectAllNumbers() {

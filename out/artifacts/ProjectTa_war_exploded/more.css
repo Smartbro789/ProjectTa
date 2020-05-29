@@ -10,7 +10,9 @@
 	background-color: #B0E0E6;
 	box-shadow: 0 10px 20px black;
 }
-
+input {
+	margin: .4rem 0;
+}
 .container {
 	width: 100%;
 	margin-top: 20px;

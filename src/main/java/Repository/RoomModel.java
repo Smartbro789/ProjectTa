@@ -4,7 +4,6 @@ import BTree.BPlusTree;
 import Interfaces.ModelLayerRoom;
 import Model.Room;
 
-import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -59,35 +58,7 @@ public class RoomModel implements ModelLayerRoom {
     }
 
     @Override
-    public ArrayList<Room> selectByRoomType(String type) {
-
-        ArrayList<Room> types = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            try (Connection conn = DriverManager.getConnection(url, username, password)) {
-
-                String sql = "SELECT * FROM room WHERE room_type = ?";
-                try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-                    preparedStatement.setString(1, type);
-                    ResultSet resultSet = preparedStatement.executeQuery();
-
-                    while (resultSet.next()) {
-                        String roomType = resultSet.getString(4);
-                        if (type.equalsIgnoreCase(roomType)) {
-                            Room room = selectOne(resultSet.getInt(1));
-                            types.add(room);
-                        }
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return types;
-    }
-
-    @Override
-    public void toBook(int id){
+    public void toBook(int id ){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
@@ -95,7 +66,7 @@ public class RoomModel implements ModelLayerRoom {
                 String sql = "UPDATE room SET room_status = ? WHERE room_id = ?";
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                     preparedStatement.setBoolean(1, true);
-                    preparedStatement.setInt(1, id);
+                    preparedStatement.setInt(2, id);
                     preparedStatement.executeUpdate();
                 }
             }

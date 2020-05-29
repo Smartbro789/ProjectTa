@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="frame">
-		<div id="header"></div>
+		<div id="header"><h1 id="logo">Book Room</h1></div>
 		<table border="1" id="table">
 			<tr class="tr">
 				<th>NUMBER</th>

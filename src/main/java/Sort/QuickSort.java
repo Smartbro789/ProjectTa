@@ -1,11 +1,13 @@
 package Sort;
 
+import Interfaces.QuickSortInterface;
 import Model.Room;
 
 import java.util.ArrayList;
 
-class QuickSort {
+public class QuickSort implements QuickSortInterface {
 
+    @Override
     public ArrayList<Room> quicksort(ArrayList<Room> input){
 
         if(input.size() <= 1){
@@ -34,7 +36,7 @@ class QuickSort {
 
     private ArrayList<Room> concatenate(ArrayList<Room> less, Room pivot, ArrayList<Room> greater){
 
-        ArrayList<Room> list = new ArrayList<Room>(less);
+        ArrayList<Room> list = new ArrayList<>(less);
         list.add(pivot);
         list.addAll(greater);
 

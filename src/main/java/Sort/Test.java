@@ -8,7 +8,6 @@ public class Test {
         int n = arr.length;
 
         QuickSort qs = new QuickSort();
-        qs.sort(arr, 0, n - 1);
         MergeSort ms = new MergeSort();
         ms.sort(arr, 0, arr.length-1);
 

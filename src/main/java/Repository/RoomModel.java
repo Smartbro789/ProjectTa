@@ -58,6 +58,7 @@ public class RoomModel implements ModelLayerRoom {
         return rooms;
     }
 
+    @Override
     public ArrayList<Room> selectByRoomType(String type) {
 
         ArrayList<Room> types = new ArrayList<>();

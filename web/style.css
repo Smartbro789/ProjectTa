@@ -3,12 +3,14 @@
 	margin: 0 auto;
 	text-align: center;
 }
+
 #header{
 	margin-bottom: 50px;
 	height: 70px;
 	background-color: #B0E0E6;
 	box-shadow: 0 10px 20px black;
 }
+
 .button{
 	width: 130px;
 	color: white;
@@ -19,21 +21,23 @@
 	font-family: monospace;
 	margin-top: 5px; 
 }
+
 #table{
 	margin-left: auto;
 	margin-right: auto;
 	width: 70%;
-	height: 400px;
 	background-color: #B0E0E6;
 	border-spacing: 5px;
 	box-shadow: 0 20px 30px black;
 }
+
 #footer{
 	margin-top: 50px;
 	height: 50px;
 	background-color: #B0E0E6;
 	box-shadow: 0 -5px 20px black;
 }
+
 .tr{
 	background-color: black;
 	color: white;

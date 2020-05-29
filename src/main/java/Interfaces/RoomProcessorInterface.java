@@ -2,6 +2,9 @@ package Interfaces;
 
 import Model.Room;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public interface RoomProcessorInterface {
 
     void addRoom(int number, String type, int price, String description);
@@ -13,4 +16,6 @@ public interface RoomProcessorInterface {
     void delete(int id);
 
     int findId(int number);
+
+    HashMap<String, ArrayList<Room>> roomsMap(ArrayList<Room> rooms);
 }

@@ -13,6 +13,8 @@ public interface ModelLayerRoom {
 
     Room selectOne(int id);
 
+    ArrayList<Room> selectByRoomType(String type);
+
     int insert(Room room);
 
     int update(Room room);

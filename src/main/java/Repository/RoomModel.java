@@ -86,6 +86,24 @@ public class RoomModel implements ModelLayerRoom {
         return types;
     }
 
+    @Override
+    public void toBook(int id){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = DriverManager.getConnection(url, username, password)){
+
+                String sql = "UPDATE room SET room_status = ? WHERE room_id = ?";
+                try(PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                    preparedStatement.setBoolean(1, true);
+                    preparedStatement.setInt(1, id);
+                    preparedStatement.executeUpdate();
+                }
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
 
     @Override
     public Room selectOne(int id) {

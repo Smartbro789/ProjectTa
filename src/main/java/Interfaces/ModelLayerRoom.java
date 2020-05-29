@@ -15,6 +15,8 @@ public interface ModelLayerRoom {
 
     ArrayList<Room> selectByRoomType(String type);
 
+    void toBook(int id);
+
     int insert(Room room);
 
     int update(Room room);

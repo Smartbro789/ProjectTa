@@ -25,10 +25,6 @@ public class AddCustomer extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<String, ArrayList<Room>> types = rooms.roomsMap(modelRoom.selectAll());
 
-        for(String keys : types.keySet()){
-            System.out.println(types.get(keys).size());
-        }
-
         req.setAttribute("types", types);
         getServletContext().getRequestDispatcher("/addCustomer.jsp").forward(req, resp);
     }

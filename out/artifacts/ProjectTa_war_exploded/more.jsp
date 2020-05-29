@@ -23,7 +23,6 @@
 					<th><button class="button"><a href='<c:url value="/book?number=${room.getRoomNumber()}" />'><h3>To Book</h3></a></button></th>
 				</tr>
 			</c:forEach>
-
 		</table>
 		<div id="footer"></div>
 	</div>

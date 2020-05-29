@@ -5,12 +5,13 @@ import Interfaces.ModelLayerCustomer;
 import Model.Customer;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class CustomerModel implements ModelLayerCustomer {
 
     private  String url = "jdbc:mysql://localhost/hoteldb?serverTimezone=Europe/Moscow&useSSL=false";
     private  String username = "root";
-    private String password = "root";
+    private String password = "admin";
 
     @Override
     public Table<Integer, Customer> selectAll() {
@@ -34,6 +35,24 @@ public class CustomerModel implements ModelLayerCustomer {
             }
         }
         catch(Exception ex){
+            System.out.println(ex);
+        }
+        return customers;
+    }
+    @Override
+    public ArrayList<Customer> selectAllList() {
+        ArrayList<Customer> customers = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM customer");
+                while (resultSet.next()) {
+                    customers.add(selectOne(resultSet.getInt(1)));
+                }
+            }
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         return customers;

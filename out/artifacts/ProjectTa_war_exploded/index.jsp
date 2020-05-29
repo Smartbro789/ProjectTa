@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,35 +14,18 @@
 		</div>
 		<table border="1" id="table">
 			<tr class="tr">
-				<th>ID</th>
-				<th>NAME</th>
 				<th>ROOM</th>
+				<th>NAME</th>
 				<th>DATE</th>
 			</tr>
-			<tr class="tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach var="customer" items="${customers}">
+				<tr class="tr">
+					<td>${customer.getCustomerRoom()}</td>
+					<td>${customer.getCustomerName()}</td>
+					<td>${customer.getCustomerDepDate()}</td>
+					<th><button class="button"><a href='<c:url value="/deleteCustomer?room=${customer.getCustomerRoom()}" />'><h3>Vynesti musor</h3></a></button></th>
+				</tr>
+			</c:forEach>
 		</table>
 		<div id="footer"></div>
 	</div>

@@ -5,6 +5,7 @@ import Interfaces.ModelLayerCustomer;
 import Model.Customer;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class CustomerModel implements ModelLayerCustomer {
 
@@ -15,7 +16,7 @@ public class CustomerModel implements ModelLayerCustomer {
     @Override
     public Table<Integer, Customer> selectAll() {
 
-        Table<Integer, Customer> hashTable = new Table<>();
+        Table<Integer, Customer> customers = new Table<>();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
@@ -29,14 +30,32 @@ public class CustomerModel implements ModelLayerCustomer {
                     Date customerArrDate = resultSet.getDate(4);
                     Date customerDepDate = resultSet.getDate(5);
                     Customer customer = new Customer(customerId, customerName, customerRoom, customerArrDate, customerDepDate);
-                    hashTable.add(customerId, customer);
+                    customers.add(customerRoom, customer);
                 }
             }
         }
         catch(Exception ex){
             System.out.println(ex);
         }
-        return hashTable;
+        return customers;
+    }
+    @Override
+    public ArrayList<Customer> selectAllList() {
+        ArrayList<Customer> customers = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM customer");
+                while (resultSet.next()) {
+                    customers.add(selectOne(resultSet.getInt(1)));
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return customers;
     }
 
     @Override
@@ -80,8 +99,8 @@ public class CustomerModel implements ModelLayerCustomer {
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
                     preparedStatement.setString(1, customer.getCustomerName());
                     preparedStatement.setInt(2, customer.getCustomerRoom());
-                    preparedStatement.setDate(3, (Date) customer.getCustomerArrDate());
-                    preparedStatement.setDate(4, (Date) customer.getCustomerDepDate());
+                    preparedStatement.setDate(3, new Date(customer.getCustomerArrDate().getTime()));
+                    preparedStatement.setDate(4, new Date(customer.getCustomerDepDate().getTime()));
                     return  preparedStatement.executeUpdate();
                 }
             }
@@ -104,9 +123,9 @@ public class CustomerModel implements ModelLayerCustomer {
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
                     preparedStatement.setString(1, customer.getCustomerName());
                     preparedStatement.setInt(2, customer.getCustomerRoom());
-                    preparedStatement.setDate(3, (Date) customer.getCustomerArrDate());
-                    preparedStatement.setDate(4, (Date) customer.getCustomerDepDate());
-                    preparedStatement.setInt(2, customer.getCustomerId());
+                    preparedStatement.setDate(3, new Date(customer.getCustomerArrDate().getTime()));
+                    preparedStatement.setDate(4, new Date(customer.getCustomerDepDate().getTime()));
+                    preparedStatement.setInt(5, customer.getCustomerId());
 
                     return  preparedStatement.executeUpdate();
                 }
